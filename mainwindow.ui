@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>MyOSS_desktop</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -91,11 +91,11 @@ QToolButton:hover{
 }</string>
          </property>
          <property name="text">
-          <string>对象列表</string>
+          <string>Objects</string>
          </property>
          <property name="icon">
-          <iconset>
-           <normaloff>../../../../../Users/1/Desktop/testData/1.jpg</normaloff>../../../../../Users/1/Desktop/testData/1.jpg</iconset>
+          <iconset resource="src.qrc">
+           <normaloff>:/icon/object</normaloff>:/icon/object</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -146,11 +146,11 @@ QToolButton:hover{
 }</string>
          </property>
          <property name="text">
-          <string>任务列表</string>
+          <string>Tasks</string>
          </property>
          <property name="icon">
-          <iconset>
-           <normaloff>../../../../../Users/1/Desktop/testData/testLargeObject.jpg</normaloff>../../../../../Users/1/Desktop/testData/testLargeObject.jpg</iconset>
+          <iconset resource="src.qrc">
+           <normaloff>:/icon/task</normaloff>:/icon/task</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -191,6 +191,8 @@ QToolButton:hover{
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="src.qrc"/>
+ </resources>
  <connections/>
 </ui>
