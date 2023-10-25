@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TaskList</class>
+ <widget class="QWidget" name="TaskList">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>601</width>
+    <height>509</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="labelFilter">
+       <property name="text">
+        <string>Filter:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="rbtnUpload">
+       <property name="text">
+        <string>Upload</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+       <property name="autoExclusive">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="rbtnFinihed">
+       <property name="text">
+        <string>Finished</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+       <property name="autoExclusive">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="rbtnProcessing">
+       <property name="text">
+        <string>Processing</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+       <property name="autoExclusive">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="rbtnDowload">
+       <property name="text">
+        <string>Download</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+       <property name="autoExclusive">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTableView" name="tableView"/>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
