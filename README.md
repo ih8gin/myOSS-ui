@@ -1,3 +1,4 @@
+## [English](./README_en.md)
 # 开发环境
 QT6.2.4
 # 使用方法

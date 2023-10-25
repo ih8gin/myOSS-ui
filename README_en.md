@@ -1,3 +1,4 @@
+## [中文](./README.md)
 # develop environment
 QT6.2.4
 # how to use
