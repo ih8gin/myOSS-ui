@@ -24,7 +24,7 @@ int TaskTableModel::rowCount(const QModelIndex &parent) const
     if (parent.isValid())
         return 0;
 
-    return myTasks.size();
+    return tasks.size();
 }
 
 int TaskTableModel::columnCount(const QModelIndex &parent) const
@@ -44,13 +44,14 @@ QVariant TaskTableModel::data(const QModelIndex &index, int role) const
             switch(index.column())
             {
             case 0: // name of file
-                return myTasks[index.row()].name;
+                return tasks[index.row()]->getName();
                 break;
-            case 1: // latest version
-                return states[myTasks[index.row()].state];
+            case 1: // trasnsmission state
+                return states[tasks[index.row()]->getState()];
                 break;
-            case 2: // size of file
-                return QString("%1 / %2").arg(myTasks[index.row()].doneSize).arg(myTasks[index.row()].totalSize);
+            case 2: // progress bar
+//                return tasks[index.row()]->progress;
+                return QString("%1 / %2").arg(tasks[index.row()]->getDoneSize()).arg(tasks[index.row()]->getTotalSize());
                 break;
 
             default:
@@ -66,4 +67,14 @@ QVariant TaskTableModel::data(const QModelIndex &index, int role) const
             return QVariant();
             break;
     }
+}
+
+int TaskTableModel::newTask(QString name, QNetworkReply* reply, qint16 state, qint32 totalSize)
+{
+    TransmissionTask* task = new TransmissionTask(name, reply, state, totalSize);
+    beginResetModel();
+    tasks.append(task);
+    endResetModel();
+    qDebug()<<"new transmission task for " << name << " added.";
+    return tasks.size();
 }

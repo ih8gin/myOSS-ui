@@ -19,6 +19,8 @@ MainWindow::MainWindow(QWidget *parent)
     btnGroup.button(0)->setChecked(true);
     ui->stackedWidget->setCurrentIndex(0);
 
+    connect(&objectList, &ObjectList::newTask, &taskList, &TaskList::newTask);
+    connect(&objectList, &ObjectList::progressUpdate, &taskList, &TaskList::update);
 }
 
 MainWindow::~MainWindow()

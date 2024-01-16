@@ -54,7 +54,7 @@ void ObjectList::on_btnDownload_clicked()
     QAbstractItemModel *model = ui->tableView->model();
     QString name = model->data(model->index(index.row(), 0)).toString();
     int version = model->data(model->index(index.row(), 1)).toInt();
-//        int size = model->data(model->index(index.row(), 2)).toInt();
+    int size = model->data(model->index(index.row(), 2)).toInt();
 //        QString hash = model->data(model->index(index.row(), 3)).toString();
 
     QString downloadDir = QFileDialog::getExistingDirectory(this, "choose download directory");
@@ -67,8 +67,10 @@ void ObjectList::on_btnDownload_clicked()
 //    qDebug()<<req.url();
 
     downloadReply = downloader->get(req);
-    connect((QIODevice *)downloadReply,SIGNAL(readyRead()), this, SLOT(readContent()));
+    connect(downloadReply, &QIODevice::readyRead, this, &ObjectList::readContent);
 
+    connect(downloadReply, &QNetworkReply::downloadProgress, this, &ObjectList::progressUpdate);
+    emit newTask(name, downloadReply, 0, size);
 }
 
 
@@ -91,6 +93,9 @@ void ObjectList::on_btnUpload_clicked()
     uploadFile = new QFile(uploadFileName);
     uploadFile->open(QIODevice::ReadOnly);
     uploadReply = uploader->put(req, uploadFile->readAll());
+
+    connect(uploadReply, &QNetworkReply::uploadProgress, this, &ObjectList::progressUpdate);
+    emit newTask(fileInfo.fileName(), uploadReply, 2, fileInfo.size());
 }
 
 void ObjectList::uploadFinished(QNetworkReply* reply)
@@ -122,7 +127,6 @@ void ObjectList::downloadFinished(QNetworkReply* reply)
     downloadFile->flush();
     downloadFile->close();
 }
-
 
 void ObjectList::readContent()
 {

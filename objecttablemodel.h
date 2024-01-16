@@ -29,7 +29,7 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
 private:
-    QList<MyObject> myObjects = {{"a", 1, 1, "xx"}};
+    QList<MyObject> myObjects = {{"zsy", -1, -1, "xx"}};
     const QStringList fields = {"name", "version", "size", "hash"};
     QNetworkAccessManager *dataRefresher;
 };

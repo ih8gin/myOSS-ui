@@ -2,7 +2,6 @@
 #define OBJECTLIST_H
 
 #include <QWidget>
-#include <QProgressBar>
 #include <QFile>
 #include "objecttablemodel.h"
 
@@ -17,6 +16,10 @@ class ObjectList : public QWidget
 public:
     explicit ObjectList(QWidget *parent = nullptr);
     ~ObjectList();
+
+signals:
+    void newTask(QString name, QNetworkReply* reply, qint16 state, qint32 totalSize);
+    void progressUpdate();
 
 private slots:
     void on_btnRefresh_clicked();
@@ -40,7 +43,6 @@ private:
     QNetworkReply *uploadReply;
     QFile *uploadFile;
     QFile *downloadFile;
-    QProgressBar *progressBar;
 };
 
 #endif // OBJECTLIST_H

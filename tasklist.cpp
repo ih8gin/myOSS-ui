@@ -17,3 +17,13 @@ TaskList::~TaskList()
 {
     delete ui;
 }
+
+void TaskList::newTask(QString name, QNetworkReply *reply, qint16 state, qint32 totalSize)
+{
+    tasks.newTask(name, reply, state, totalSize);
+}
+
+void TaskList::update()
+{
+    ui->tableView->viewport()->update();
+}

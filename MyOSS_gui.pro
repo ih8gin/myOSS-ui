@@ -15,14 +15,16 @@ SOURCES += \
     objectlist.cpp \
     objecttablemodel.cpp \
     tasklist.cpp \
-    tasktablemodel.cpp
+    tasktablemodel.cpp \
+    transmissiontask.cpp
 
 HEADERS += \
     mainwindow.h \
     objectlist.h \
     objecttablemodel.h \
     tasklist.h \
-    tasktablemodel.h
+    tasktablemodel.h \
+    transmissiontask.h
 
 FORMS += \
     mainwindow.ui \
